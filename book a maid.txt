@@ -1,0 +1,723 @@
+ book_maid.html-
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book a Maid</title>
+    <link rel="shortcut icon" type="image/x-icon" href="logo1.png" />
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link rel="stylesheet" href="book_maid.css">
+</head>
+
+<body>
+    <section class="header">
+        <div class="logo"><img src="logo1.png" alt="" class="img1">
+            <img src="yellowsense.png" alt="" class="img2">
+        </div>
+
+        <nav class="navbar">
+            <a href="index.html">Home</a>
+            <a href="#about us">About Us</a>
+            <a href="#faq">FAQ's</a>
+            <a href="#contact us">Contact</a>
+            <a href="#" class="maid">Refer a Maid</a>
+        </nav>
+
+
+        <div id="menu-btn" class="fas fa-bars"></div>
+    </section>
+
+    <section class="main-content">
+        <h1 class="h1-title">Book a Maid</h1>
+        <div class="image-container">
+            <img src="maid-image.png" alt="Maid Image">
+        </div>
+
+        <form id="maid-booking-form" action="backend_api_url" method="POST">
+            <div class="form-container">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="name">Name</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">Phone Number</label>
+                        <input type="tel" id="phone" name="phone" required>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="address">Address</label>
+                        <input type="text" id="address" name="address" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="gender">Gender</label>
+                        <select id="gender" name="gender" required>
+                            <option value="male">Male</option>
+                            <option value="female">Female</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Services</label>
+                        <label for="sweeping">
+                            <input type="checkbox" id="sweeping" name="services[]" value="sweeping">
+                            Sweeping
+                        </label>
+
+                        <label for="mopping">
+                            <input type="checkbox" id="mopping" name="services[]" value="mopping">
+                            Mopping
+                        </label>
+
+                        <label for="washroom Cleaning">
+                            <input type="checkbox" id="washroom Cleaning" name="services[]" value="washroom Cleaning">
+                            Washroom Cleaning
+                        </label>
+
+                        <label for="Utensils Cleaning">
+                            <input type="checkbox" id="Utensils Cleaning" name="services[]" value="Utensils Cleaning">
+                            Utensils Cleaning
+                        </label>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="mention">Additional Requirements</label>
+                        <textarea id="mention" name="mention" placeholder="Additional comments or requirements" rows="5"></textarea>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <button type="submit">Submit</button>
+                </div>
+            </div>
+        </form>
+
+
+    </section>
+   <script src="script.js"></script>
+</body>
+</body>
+
+</html>
+
+
+book_maid.css-
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;500;600;800;900&display=swap');
+
+* {
+    box-sizing: border-box;
+}
+
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+    scroll-padding: 5rem;
+}
+
+body {
+    font-family: 'Montserrat', sans-serif;
+    margin: 0;
+    padding: 0;
+    /* background: linear-gradient( #FFFFE9); */
+    background: #FFFFE9;
+
+
+}
+
+.main {
+    height: 100%;
+    width: 100%;
+    position: relative;
+    
+}
+
+section {
+    padding: 5rem 10%;
+}
+
+button {
+    padding: 10px 20px;
+    margin: 10px;
+    font-size: 16px;
+}
+
+
+.header {
+    position: sticky;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    display: flex;
+    flex-wrap: wrap;
+    /* Add flex-wrap to allow content to wrap below the header */
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
+    align-items: center;
+    justify-content: space-between;
+    background: white;
+    /* background: linear-gradient(to bottom right, #FFF0CC, #FFFFFF); */
+    /* Add a background color to ensure content is visible */
+}
+
+.main {
+    padding-top: 10px;
+    /* Adjust the padding to push the content below the sticky header */
+}
+
+
+/* .header .logo {
+    font-size: 1.5rem;
+} */
+.logo {
+    display: flex;
+    align-items: center;
+}
+
+.header .navbar a {
+    font-size: 1.4rem;
+    font-weight: 600;
+    margin-left: 2rem;
+    text-decoration: none;
+    color: black;
+    transition: transform 0.2s ease-in-out;
+}
+
+
+.header .navbar a:hover {
+
+    color: #5f543a;
+
+}
+
+.header .navbar .maid {
+    border: 2px solid #5f543a;
+    border-radius: 8px;
+    padding: 0.6rem 1.2rem;
+}
+
+#menu-btn {
+    font-size: 3rem;
+    cursor: pointer;
+    color: black;
+    display: none;
+}
+
+.h1-title{
+color: #A15942;
+font-family: Montserrat;
+font-size: 3rem;
+font-style: normal;
+font-weight: 700;
+line-height: normal;
+margin-top: 0rem;
+display: flex;
+justify-content: start;
+}
+
+.image-container{
+    width: 10rem;
+height: 5rem;
+flex-shrink: 0;
+margin-left: 50rem;
+/* outline: auto; */
+margin-top: -11rem;
+
+}
+
+/* Default styles for form container */
+.form-container {
+    width: 48rem;
+    height: 25rem;
+    padding: 2rem; 
+    /* box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);  */
+    margin-top: 6rem; 
+    border-radius: 2.125rem;
+    border: 1px solid #EFF0F6;
+    background: #FFED9B;
+    box-shadow: 0px 5px 16px 0px rgba(8, 15, 52, 0.06);
+}
+
+/* Add this CSS to your existing stylesheet or create a new one */
+
+.form {
+    background-color: #f5f5f5;
+    padding: 2rem;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin-top: 2rem;
+    text-align: left; /* Adjust text alignment */
+}
+
+.form h2 {
+    color: #A15942;
+    font-family: Montserrat;
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+}
+
+.form-row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin-bottom: 1rem;
+}
+
+.form-group {
+    flex: 0 0 48%; /* Adjust the width as needed for responsiveness */
+    font-size: 1rem;
+}
+
+.form-group label {
+    display: flex;
+    font-weight: 500;
+    margin-bottom: 0.5rem;
+    
+}
+
+input[type="text"],
+input[type="tel"],
+select,
+textarea {
+    width: 90%;
+    padding: 0.5rem;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1rem;
+    border-radius: 0.6rem;
+border: 1px solid var(--neutral-300, #EFF0F6);
+background: var(--neutral-100, #FFF);
+
+/* Input/Default */
+box-shadow: 0px 2px 6px 0px rgba(19, 18, 66, 0.07);
+}
+
+button[type="submit"] {
+    background-color: #A15942;
+    color: white;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    font-size: 1rem;
+    cursor: pointer;
+    display: block; /* Change the display property to block */
+    margin: 0 auto;
+}
+
+/* Add media queries for responsiveness */
+@media screen and (max-width: 768px) {
+    .form-row {
+        flex-direction: column;
+    }
+
+    .form-group {
+        flex: 0 0 100%;
+        margin-bottom: 0.5rem;
+    }
+}
+
+
+/* Responsive styles for form container */
+@media screen and (max-width: 768px) {
+    .form-container {
+        width: 100%; 
+        height: auto; 
+        margin-top: 1rem; 
+    }
+
+    label,
+    input[type="text"],
+    input[type="tel"],
+    select,
+    textarea {
+        font-size: 0.9rem;
+    }
+}
+
+
+
+
+
+
+@media (max-width:1200px) {
+    section {
+        padding: 3rem 5%;
+    }
+}
+
+@media (max-width:991px) {
+
+    html {
+        font-size: 55%;
+    }
+
+    section {
+        padding: 3rem 2rem;
+    }
+}
+
+
+
+
+
+@media (max-width:890px) {
+
+.main {
+        padding-top: 30px;
+    }
+
+ .nav {
+        background-color: white;
+        /* padding: 0 6vw; */
+        /* might uncomment the above function */
+    }
+
+    .left-nav {
+        padding: 0 6vw;
+    }
+
+    .nav h3 {
+        font-size: 4vw;
+    }
+
+    .nav i {
+        font-size: 6vw;
+        display: block;
+    }
+
+    .nav ul {
+        display: none;
+    }
+
+    /* .right-content {
+        display: block;
+    } */
+
+
+
+
+    .button-left {
+        gap: 1rem;
+        display: none;
+    }
+
+
+
+
+    .button-right {
+        /* flex-direction: column; */
+        display: flex;
+        /* flex-wrap: wrap; */
+        align-items: center;
+        justify-content: center;
+        gap: 1rem;
+        /* padding: 0rem 1rem */
+        padding-right: 1.4rem;
+
+    }
+
+
+
+    .button-right input {
+        background-color: #5f543a;
+        color: #FFF0CC;
+        padding: 0.8rem 2rem;
+        font-size: 1.2rem;
+        font-weight: 600;
+        border: none;
+        border-radius: 5px;
+        margin-bottom: 9rem;
+    }
+
+    .button-right input:hover {
+        background: linear-gradient(to bottom right, #f2e3bf, #FFF0CC);
+        color: #5f543a;
+        border: 2px solid #5f543a;
+        cursor: pointer;
+    }
+
+  .logo .img1 {
+        height: 3rem;
+        width: 4rem;
+    }
+
+    .logo .img2 {
+        height: 3rem;
+        width: 12rem;
+    }
+}
+
+
+
+@media (max-width:768px) {
+
+    #menu-btn {
+        display: inline-block;
+        transition: 0.2s linear;
+    }
+
+    #menu-btn.fa-times {
+        transform: rotate(180deg);
+    }
+
+    .header {
+        box-shadow: none;
+    }
+
+    .header .navbar {
+        position: absolute;
+        top: 99%;
+        left: 0;
+        right: 0;
+        background-color: #FFF0CC;
+        border-top: 0.1rem solid black;
+        padding: 2rem;
+        clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
+    }
+
+
+    .header .navbar.active {
+
+        clip-path: polygon(0 0, 100% 2%, 100% 100%, 0% 100%);
+
+    }
+
+    .header .navbar a {
+        display: block;
+        margin: 6rem;
+        text-align: center;
+        font-size: 2.5rem;
+        font-weight: 500;
+    }
+
+    .header .navbar a:hover {
+        transform: scale(1.2);
+    }
+
+}
+
+
+
+@media (max-width:600px) {
+
+    #menu-btn {
+        display: inline-block;
+        transition: 0.2s linear;
+    }
+
+    #menu-btn.fa-times {
+        transform: rotate(180deg);
+    }
+
+    .header .navbar {
+        position: absolute;
+        top: 99%;
+        left: 0;
+        right: 0;
+        background-color: #FFF0CC;
+        border-top: 0.1rem solid black;
+        padding: 2rem;
+        clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
+    }
+
+
+    .header .navbar.active {
+
+        clip-path: polygon(0 0, 100% 2%, 100% 100%, 0% 100%);
+
+    }
+
+    .header .navbar a {
+        display: block;
+        margin: 6rem;
+        text-align: center;
+        font-size: 2.5rem;
+        font-weight: 500;
+    }
+
+  .header .navbar a:hover {
+        transform: scale(1.2);
+    }
+    }
+
+
+
+@media (max-width:400px) {
+
+    #menu-btn {
+        display: inline-block;
+        transition: 0.2s linear;
+    }
+
+    #menu-btn.fa-times {
+        transform: rotate(180deg);
+    }
+
+    .header .navbar {
+        position: absolute;
+        top: 99%;
+        left: 0;
+        right: 0;
+        background-color: #FFF0CC;
+        border-top: 0.1rem solid black;
+        padding: 2rem;
+        clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
+    }
+
+
+    .header .navbar.active {
+
+        clip-path: polygon(0 0, 100% 2%, 100% 100%, 0% 100%);
+
+    }
+
+    .header .navbar a {
+        display: block;
+        margin: 6rem;
+        text-align: center;
+        font-size: 2.5rem;
+        font-weight: 500;
+    }
+    
+    .header .navbar a:hover {
+        transform: scale(1.2);
+    }
+
+}
+
+@media (max-width:450px) {
+
+    html {
+        font-size: 55%;
+    }
+
+    section {
+        padding: 3rem 2rem;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .h1-title {
+        font-size: 2rem; 
+    }
+
+    .image-container {
+        width: 8rem; 
+        height: 4rem; 
+        margin-top: -8rem; 
+    }
+}
+
+
+script.js-
+const items = document.querySelectorAll('.accordion button');
+
+function toggleAccordion() {
+    const itemToggle = this.getAttribute('aria-expanded');
+
+    for (i = 0; i < items.length; i++) {
+        items[i].setAttribute('aria-expanded', 'false');
+    }
+
+    if (itemToggle == 'false') {
+        this.setAttribute('aria-expanded', 'true');
+    }
+}
+
+items.forEach((item) => item.addEventListener('click', toggleAccordion));
+
+
+
+
+
+
+
+
+let menu = document.querySelector('#menu-btn');
+let navbar = document.querySelector('.header .navbar');
+
+menu.onclick = () => {
+    menu.classList.toggle('fa-times');
+    navbar.classList.toggle('active');
+};
+
+
+window.onscroll = () => {
+    menu.classList.remove('fa-times');
+    navbar.classList.remove('active');
+};
+
+const modal = document.getElementById("myModal");
+const openModalBtn = document.getElementById("openModalBtn");
+const closeModalBtn = document.getElementById("closeModalBtn");
+const bookMaidBtn = document.getElementById("bookMaidBtn");
+const bookCookBtn = document.getElementById("bookCookBtn");
+const bookNannyBtn = document.getElementById("bookNannyBtn");
+
+// Function to open the modal
+function openModal() {
+    modal.style.display = "block";
+}
+
+// Function to close the modal
+function closeModal() {
+    modal.style.display = "none";
+}
+
+// Function to redirect to a URL
+function redirectToURL(url) {
+    window.location.href = url;
+}
+
+// Event listeners
+openModalBtn.addEventListener("click", openModal);
+closeModalBtn.addEventListener("click", closeModal);
+// bookMaidBtn.addEventListener("click", () => {
+//     redirectToURL("http://3.110.87.191:8000/request_maid");
+// });
+// bookCookBtn.addEventListener("click", () => {
+//     redirectToURL("http://3.110.87.191:8000/request_cook");
+// });
+// bookNannyBtn.addEventListener("click", () => {
+//     redirectToURL("http://3.110.87.191:8000/request_nanny");
+// });
+
+
+// Add this code to your existing script.js file
+
+document.addEventListener('DOMContentLoaded', function () {
+    // Find the "Book a Maid" button by its ID
+    const bookMaidBtn = document.getElementById('bookMaidBtn');
+
+    // Add a click event listener to the button
+    bookMaidBtn.addEventListener('click', function () {
+        // Redirect to the "book_maid.html" page
+        window.location.href = 'book_maid.html';
+    });
+});
+
+
+// Close the modal if the user clicks outside of it
+window.addEventListener("click", (event) => {
+    if (event.target === modal) {
+        closeModal();
+    }
+});
+
+
+
+
+
+
+
+
